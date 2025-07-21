@@ -3,7 +3,9 @@
 Console.WriteLine("Hello, Python!");
 
 //привязываем библиотеку Python
-Runtime.PythonDLL = @"C:\Users\Aleksandr\AppData\Local\Programs\Python\Python310\python310.dll";
+// Runtime.PythonDLL = @"C:\Users\Aleksandr\AppData\Local\Programs\Python\Python310\python310.dll";
+
+Runtime.PythonDLL = @"/usr/lib/x86_64-linux-gnu/libpython3.10.so";
 
 PythonEngine.Initialize();
 
