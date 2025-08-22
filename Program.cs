@@ -5,7 +5,8 @@ Console.WriteLine("Hello, Python!");
 //привязываем библиотеку Python
 // Runtime.PythonDLL = @"C:\Users\Aleksandr\AppData\Local\Programs\Python\Python310\python310.dll";
 
-Runtime.PythonDLL = @"/usr/lib/x86_64-linux-gnu/libpython3.10.so";
+//подтягиваем установленную библиотеку
+Runtime.PythonDLL = @"/usr/lib/x86_64-linux-gnu/libpython3.13.so.1";
 
 PythonEngine.Initialize();
 
@@ -43,6 +44,15 @@ void UserExample()
 {
     try
     {
+
+        // Добавляем путь к папке, где лежит example.py
+        dynamic sys = Py.Import("sys");
+
+        //указываем путь к папке (или полный путь) с example.py
+        //так как example копируется в каталог с проектом, то
+        string path = AppDomain.CurrentDomain.BaseDirectory;
+        sys.path.append(path); 
+
         dynamic example = Py.Import("example");
 
         example.hello_world();
